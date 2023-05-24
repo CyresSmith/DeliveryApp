@@ -1,35 +1,52 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { nanoid } from 'nanoid';
 
 import { IoIosMail } from 'react-icons/io';
-import { RiLoginBoxFill } from 'react-icons/ri';
+import { FaCheck } from 'react-icons/fa';
 import { FaUserCircle, FaPhoneAlt, FaMapMarkedAlt } from 'react-icons/fa';
 
 import FormField from './FormField';
 import { OrderForm as Form } from './OrderForm.styled';
 import Button from 'components/shared/Button';
 import Box from 'components/shared/Box';
+import { useState } from 'react';
 
 const ValidationSchema = Yup.object().shape({
-  email: Yup.string().email('Must be valid email').required('Required'),
-  password: Yup.string()
-    .min(8, 'Must be at least 8 characters')
+  name: Yup.string()
+    .min(3, 'Must be at least 3 characters')
     .required('Required'),
+  email: Yup.string().email('Must be valid email').required('Required'),
+  phone: Yup.string().required('Required'),
+  adress: Yup.string().required('Required'),
 });
 
-const OrderForm = () => {
+const initialValues = {
+  name: '',
+  email: '',
+  phone: '',
+  adress: '',
+};
+
+const OrderForm = ({ OrderItems, totalPrice }) => {
   return (
     <Formik
-      initialValues={{
-        email: '',
-        password: '',
-      }}
+      initialValues={initialValues}
       validationSchema={ValidationSchema}
-      onSubmit={({ email, password }, { resetForm }) => {
+      onSubmit={({ name, email, phone, adress }, { resetForm }) => {
         const order = {
-          email: email.trim(),
-          password: password.trim(),
+          number: nanoid(),
+          client: {
+            name: name.trim(),
+            email: email.trim(),
+            phone: phone.trim(),
+            adress: adress.trim(),
+          },
+          items: OrderItems,
+          totalPrice,
         };
+
+        console.log(order);
 
         resetForm();
       }}
@@ -74,7 +91,7 @@ const OrderForm = () => {
         <Button
           type="submit"
           //   isLoading={isLoading}
-          icon={RiLoginBoxFill}
+          icon={FaCheck}
           //   disabled={isLoading ? true : false}
           children="Submit order"
           iconSize={20}

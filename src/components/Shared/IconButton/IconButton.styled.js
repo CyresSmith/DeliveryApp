@@ -4,9 +4,9 @@ import theme from 'theme';
 const StyledButton = styled('button')`
   display: inline-flex;
   padding: ${theme.space[2]};
-  color: ${theme.colors.primary};
+  color: ${p => p.color};
   background-color: ${p =>
-    p.disabled ? theme.colors.muted : `theme.colors.${p.backgroundColor}`};
+    p.disabled ? theme.colors.muted : p.backgroundColor};
   cursor: pointer;
   border: ${theme.borders.none};
   border-radius: ${p => (p.round ? theme.radii.round : theme.radii.normal)};

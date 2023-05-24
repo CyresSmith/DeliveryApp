@@ -4,11 +4,12 @@ const theme = {
   colors: {
     white: '#fff',
     text: '#27374D',
-    background: '#9DB2BF',
+    background: '#DDE6ED',
     primary: '#27374D',
     secondary: '#526D82',
     accent: '#9CFF2E',
-    muted: '#DDE6ED',
+    muted: '#9DB2BF',
+    alert: '#FF1E1E',
   },
 
   fonts: {

@@ -1,16 +1,26 @@
+import { useSelector } from 'react-redux';
+
+import { getCart } from 'redux/selectors';
+
 import { OrderList } from './Order.styled';
 import Offer from './Offer';
 
-import offers from '../../../../offers.json';
-
-const Order = ({ setTotalPrice }) => {
+const Order = ({ cart, setOrderItems }) => {
   return (
     <OrderList>
-      {offers.map(offer => {
-        return (
-          <Offer setTotalPrice={setTotalPrice} key={offer.name} offer={offer} />
-        );
-      })}
+      {cart.length > 0 ? (
+        cart.map(offer => {
+          return (
+            <Offer
+              setOrderItems={setOrderItems}
+              key={offer.name}
+              offer={offer}
+            />
+          );
+        })
+      ) : (
+        <p>Cart is empty</p>
+      )}
     </OrderList>
   );
 };

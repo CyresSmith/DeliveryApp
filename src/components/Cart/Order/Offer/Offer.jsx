@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { FaPlus, FaMinus } from 'react-icons/fa';
+import { FaPlus, FaMinus, FaTrashAlt } from 'react-icons/fa';
 
 import { Item, Image, Name, Price } from './Item.styled';
 
@@ -8,28 +9,45 @@ import Box from 'components/shared/Box';
 import IconButton from 'components/Shared/IconButton';
 
 import theme from 'theme';
+import { removeFromCart } from 'redux/cartSlice';
 
-const Offer = ({ offer, setTotalPrice }) => {
+const Offer = ({ offer, setOrderItems }) => {
   const [Count, setCount] = useState(1);
 
-  const total = Number(offer.price) * Count;
+  const dispatch = useDispatch();
+
+  const total = () => Number(offer.price) * Count;
 
   useEffect(() => {
-    setTotalPrice(prev => prev + Number(offer.price));
-  }, []);
+    setOrderItems(prev =>
+      prev.map(item => {
+        if (item.name !== offer.name) {
+          return item;
+        }
+
+        item.count = Count;
+        item.total = item.price * Count;
+
+        return item;
+      })
+    );
+  }, [Count, offer.name, setOrderItems]);
 
   const increaseCount = () => {
     setCount(prev => prev + 1);
-    setTotalPrice(prev => prev + Number(offer.price));
   };
 
   const decreaseCount = () => {
-    if (Count < 1) {
+    if (Count === 1) {
+      dispatch(removeFromCart(offer.name));
       return;
     }
 
     setCount(prev => prev - 1);
-    setTotalPrice(prev => prev - Number(offer.price));
+  };
+
+  const removeItem = () => {
+    dispatch(removeFromCart(offer.name));
   };
 
   return (
@@ -42,11 +60,13 @@ const Offer = ({ offer, setTotalPrice }) => {
             Price: <b>{offer.price}</b>
           </span>
           <span style={{ marginLeft: theme.space[5] }}>
-            Total: <b>{offer.price * Count}</b>
-          </span>
-          <span style={{ marginLeft: theme.space[5] }}>
             Count: <b>{Count}</b>
           </span>
+          {total() > offer.price && (
+            <span style={{ marginLeft: theme.space[5] }}>
+              Total: <b>{total()}</b>
+            </span>
+          )}
         </Price>
       </Box>
 
@@ -70,7 +90,13 @@ const Offer = ({ offer, setTotalPrice }) => {
           iconSize={20}
           onClick={decreaseCount}
           ariaLable="decrease count"
-          disabled={Count === 0}
+        />
+        <IconButton
+          icon={FaTrashAlt}
+          iconSize={20}
+          onClick={removeItem}
+          ariaLable="remove item "
+          color={theme.colors.alert}
         />
       </Box>
     </Item>

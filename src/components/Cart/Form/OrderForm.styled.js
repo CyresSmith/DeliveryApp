@@ -9,5 +9,4 @@ export const OrderForm = styled(Form)`
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  padding: ${theme.space[5]} ${theme.space[4]};
 `;
