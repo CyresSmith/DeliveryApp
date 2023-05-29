@@ -15,11 +15,11 @@ import {
   Desc,
 } from './OfferItem.styled';
 
-const Item = ({ item }) => {
+const Item = ({ item, ActiveSeller }) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    dispatch(addToCart(item));
+    dispatch(addToCart({ ...item, count: 1, total: item.price }));
   };
 
   return (
@@ -29,12 +29,16 @@ const Item = ({ item }) => {
         <Name>{item.name}</Name>
         <Price>{item.price}₴</Price>
         <Desc>{item.desc}</Desc>
+        <Desc>
+          seller: <b>{item.seller.name.toUpperCase()}</b>
+        </Desc>
         <Button
           icon={MdAddShoppingCart}
           iconSize={15}
           onClick={handleAddToCart}
+          disabled={!ActiveSeller}
         >
-          Add to cart
+          {ActiveSeller ? 'Add to cart' : ' please select seller'}
         </Button>
       </ItemFooter>
     </ItemBox>

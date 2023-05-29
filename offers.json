@@ -3,84 +3,98 @@
     "name": "Gamburger",
     "image": "https://contrabanda.kiev.ua/media/catalog/product/cache/1/thumbnail/600x/17f82f742ffe127f42dca9de82fb58b1/e/l/elc.jpg",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, aperiam.",
-    "price": "250"
+    "price": "250",
+    "seller": "64731cae5cc4a3bfa47a192b"
   },
   {
     "name": "Sandvich",
     "image": "https://m.az-jenata.bg/media/az-jenata/files/articles/448x336/182954bef5f1d549e889f524b5804964.jpg",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, aperiam.",
-    "price": "200"
+    "price": "200",
+    "seller": "64731cae5cc4a3bfa47a192c"
   },
   {
     "name": "Chisburger",
     "image": "https://contrabanda.kiev.ua/media/catalog/product/cache/1/thumbnail/600x/17f82f742ffe127f42dca9de82fb58b1/b/e/bec2.jpg",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, aperiam.",
-    "price": "250"
+    "price": "250",
+    "seller": "64731cae5cc4a3bfa47a192d"
   },
   {
     "name": "Pizza",
     "image": "https://www.foodandwine.com/thmb/CGXpgjWOgHWv9TsqyMoLyl5cYrs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/soppressata-pizza-with-calabrian-chile-hot-honey-FT-RECIPE0422-827abb3537834dbcb6ab0bbd6efece39.jpg",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, aperiam.",
-    "price": "300"
+    "price": "300",
+    "seller": "64731cae5cc4a3bfa47a192b"
   },
   {
     "name": "Shaverma",
     "image": "https://cdn.vkuso.ru/uploads/vkusnaya-shaverma-s-kurinym-file-po-domashnemu.jpg",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, aperiam.",
-    "price": "150"
+    "price": "150",
+    "seller": "64731cae5cc4a3bfa47a192c"
   },
   {
     "name": "Pita",
     "image": "https://eda.ru/img/eda/c620x415/s1.eda.ru/StaticContent/Photos/150412162041/150417150900/p_O.jpg",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, aperiam.",
-    "price": "250"
+    "price": "250",
+    "seller": "64731cae5cc4a3bfa47a192d"
   },
   {
     "name": "Roll",
     "image": "https://simmertoslimmer.com/wp-content/uploads/2021/06/Paneer-Kathi-Roll.jpg",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, aperiam.",
-    "price": "150"
+    "price": "150",
+    "seller": "64731cae5cc4a3bfa47a192e"
   },
   {
     "name": "Gamburger1",
     "image": "https://contrabanda.kiev.ua/media/catalog/product/cache/1/thumbnail/600x/17f82f742ffe127f42dca9de82fb58b1/e/l/elc.jpg",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, aperiam.",
-    "price": "250"
+    "price": "250",
+    "seller": "64731cae5cc4a3bfa47a192e"
   },
   {
     "name": "Sandvich1",
     "image": "https://contrabanda.kiev.ua/media/catalog/product/cache/1/thumbnail/600x/17f82f742ffe127f42dca9de82fb58b1/e/l/elc.jpg",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, aperiam.",
-    "price": "250"
+    "price": "250",
+    "seller": "64731cae5cc4a3bfa47a192b"
   },
   {
     "name": "Chisburger1",
     "image": "https://contrabanda.kiev.ua/media/catalog/product/cache/1/thumbnail/600x/17f82f742ffe127f42dca9de82fb58b1/e/l/elc.jpg",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, aperiam.",
-    "price": "250"
+    "price": "250",
+    "seller": "64731cae5cc4a3bfa47a192c"
   },
   {
     "name": "Pizza1",
     "image": "https://contrabanda.kiev.ua/media/catalog/product/cache/1/thumbnail/600x/17f82f742ffe127f42dca9de82fb58b1/e/l/elc.jpg",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, aperiam.",
-    "price": "250"
+    "price": "250",
+    "seller": "64731cae5cc4a3bfa47a192d"
   },
   {
     "name": "Shaverma1",
     "image": "https://contrabanda.kiev.ua/media/catalog/product/cache/1/thumbnail/600x/17f82f742ffe127f42dca9de82fb58b1/e/l/elc.jpg",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, aperiam.",
-    "price": "250"
+    "price": "250",
+    "seller": "64731cae5cc4a3bfa47a192e"
   },
   {
     "name": "Pita1",
     "image": "https://contrabanda.kiev.ua/media/catalog/product/cache/1/thumbnail/600x/17f82f742ffe127f42dca9de82fb58b1/e/l/elc.jpg",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, aperiam.",
-    "price": "250"
+    "price": "250",
+    "seller": "64731cae5cc4a3bfa47a192b"
   },
   {
     "name": "Roll1",
     "image": "https://contrabanda.kiev.ua/media/catalog/product/cache/1/thumbnail/600x/17f82f742ffe127f42dca9de82fb58b1/e/l/elc.jpg",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, aperiam.",
-    "price": "250"
+    "price": "250",
+    "seller": "64731cae5cc4a3bfa47a192c"
   }
 ]

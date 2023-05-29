@@ -11,7 +11,7 @@ export const StyledButton = styled('button')`
   color: ${theme.colors.primary};
   background-color: ${p =>
     p.disabled ? theme.colors.muted : theme.colors.accent};
-  cursor: pointer;
+  cursor: ${p => (p.disabled ? '' : 'pointer')};
   border: ${theme.borders.none};
   border-radius: ${theme.radii.normal};
   box-shadow: ${theme.shadow.low};

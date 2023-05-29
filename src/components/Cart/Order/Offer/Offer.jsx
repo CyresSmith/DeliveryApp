@@ -9,29 +9,18 @@ import Box from 'components/shared/Box';
 import IconButton from 'components/Shared/IconButton';
 
 import theme from 'theme';
-import { removeFromCart } from 'redux/cartSlice';
+import { removeFromCart, changeItemInCart } from 'redux/cartSlice';
 
-const Offer = ({ offer, setOrderItems }) => {
+const Offer = ({ offer }) => {
   const [Count, setCount] = useState(1);
 
   const dispatch = useDispatch();
 
-  const total = () => Number(offer.price) * Count;
+  const total = Number(offer.price) * Count;
 
   useEffect(() => {
-    setOrderItems(prev =>
-      prev.map(item => {
-        if (item.name !== offer.name) {
-          return item;
-        }
-
-        item.count = Count;
-        item.total = item.price * Count;
-
-        return item;
-      })
-    );
-  }, [Count, offer.name, setOrderItems]);
+    dispatch(changeItemInCart({ name: offer.name, count: Count, total }));
+  }, [Count, dispatch]);
 
   const increaseCount = () => {
     setCount(prev => prev + 1);
@@ -62,9 +51,9 @@ const Offer = ({ offer, setOrderItems }) => {
           <span style={{ marginLeft: theme.space[5] }}>
             Count: <b>{Count}</b>
           </span>
-          {total() > offer.price && (
+          {total > offer.price && (
             <span style={{ marginLeft: theme.space[5] }}>
-              Total: <b>{total()}</b>
+              Total: <b>{total}</b>
             </span>
           )}
         </Price>

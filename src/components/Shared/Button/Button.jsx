@@ -1,4 +1,3 @@
-import { PropTypes } from 'prop-types';
 import { StyledButton, ButtonText, Loader } from './Button.styled';
 import { BiLoaderCircle } from 'react-icons/bi';
 
@@ -22,15 +21,6 @@ const Button = ({
       <ButtonText isIconThere={Icon}>{children}</ButtonText>
     </StyledButton>
   );
-};
-
-Button.propTypes = {
-  icon: PropTypes.func,
-  type: PropTypes.string,
-  disabled: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  children: PropTypes.string.isRequired,
-  iconSize: PropTypes.number,
 };
 
 export default Button;

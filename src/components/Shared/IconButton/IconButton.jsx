@@ -29,13 +29,4 @@ const IconButton = ({
   );
 };
 
-IconButton.propTypes = {
-  icon: PropTypes.func.isRequired,
-  iconSize: PropTypes.number.isRequired,
-  type: PropTypes.string,
-  disabled: PropTypes.bool,
-  ariaLable: PropTypes.string.isRequired,
-  round: PropTypes.bool,
-};
-
 export default IconButton;

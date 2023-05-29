@@ -16,8 +16,23 @@ const cartSlice = createSlice({
     removeFromCart(state, { payload }) {
       return state.filter(item => item.name !== payload);
     },
+    changeItemInCart(state, { payload }) {
+      state = state.map(item => {
+        if (item.name !== payload.name) {
+          return item;
+        }
+        item.count = payload.count;
+        item.total = payload.total;
+
+        return item;
+      });
+    },
+    resetCart() {
+      return cartInitialState;
+    },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, changeItemInCart, resetCart } =
+  cartSlice.actions;
 export const cart = cartSlice.reducer;

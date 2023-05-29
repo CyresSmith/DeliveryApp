@@ -24,3 +24,10 @@ export const OrderList = styled.ul`
     border-radius: 4px;
   }
 `;
+
+export const EmptyCart = styled.p`
+  font-size: ${theme.fontSizes.xl};
+  font-weight: ${theme.fontWeights.bold};
+  color: ${theme.colors.primary};
+  text-align: center;
+`;

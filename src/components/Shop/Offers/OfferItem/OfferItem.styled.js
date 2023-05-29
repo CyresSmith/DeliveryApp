@@ -4,7 +4,7 @@ import theme from 'theme';
 
 export const ItemBox = styled.li`
   width: calc((100% - (${theme.space[5]} * 2)) / 3);
-  height: 450px;
+  height: 550px;
   background-color: ${theme.colors.white};
   border-radius: ${theme.radii.normal};
   overflow: hidden;
