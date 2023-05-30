@@ -16,10 +16,10 @@ import { IoIosMail } from 'react-icons/io';
 import { FaCheck } from 'react-icons/fa';
 import { FaUserCircle, FaPhoneAlt, FaMapMarkedAlt } from 'react-icons/fa';
 
-import FormField from './FormField';
 import { OrderForm as Form } from './OrderForm.styled';
 import Button from 'components/shared/Button';
 import Box from 'components/shared/Box';
+import FormField from 'components/Shared/FormField';
 
 const phoneRegExp =
   /^(\+?\d{1,3}\s?-?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{2}[\s.-]?\d{2}$/;
