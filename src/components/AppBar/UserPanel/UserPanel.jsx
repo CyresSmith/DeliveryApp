@@ -1,7 +1,5 @@
 import Box from 'components/shared/Box';
-
 import UserNavigation from './UserNavigation';
-
 import User from './User/User';
 
 const token = 123;

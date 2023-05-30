@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Notify } from 'notiflix';
 
-import { Autocomplete } from '@react-google-maps/api';
+import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
+
+const MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 import { getCart } from 'redux/selectors';
-import { useAddNewOrderMutation } from 'redux/ordersApi';
 import { resetCart } from 'redux/cartSlice';
+import { useAddNewOrderMutation } from 'redux/ordersApi';
 
 import { IoIosMail } from 'react-icons/io';
 import { FaCheck } from 'react-icons/fa';
@@ -44,7 +45,14 @@ const initialValues = {
   adress: '',
 };
 
+const libraries = ['places'];
+
 const OrderForm = ({ toggleModal, setDestination, ActiveSeller }) => {
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: MAPS_API_KEY,
+    libraries,
+  });
+
   const cart = useSelector(getCart);
   const dispatch = useDispatch();
 
@@ -76,7 +84,11 @@ const OrderForm = ({ toggleModal, setDestination, ActiveSeller }) => {
         position: 'right-top',
       });
     }
-  }, [dispatch, isError, isSuccess, isUninitialized, toggleModal]);
+  }, [dispatch, error, isError, isSuccess, isUninitialized, toggleModal]);
+
+  if (!isLoaded) {
+    return <p />;
+  }
 
   return (
     <Formik
@@ -152,14 +164,14 @@ const OrderForm = ({ toggleModal, setDestination, ActiveSeller }) => {
         </Box>
 
         <Box mb={[5]}>
-          {/* <Autocomplete> */}
-          <FormField
-            type="adress"
-            label="Adress"
-            icon={FaMapMarkedAlt}
-            placeholder="Adress"
-          />
-          {/* </Autocomplete> */}
+          <Autocomplete>
+            <FormField
+              type="adress"
+              label="Adress"
+              icon={FaMapMarkedAlt}
+              placeholder="Adress"
+            />
+          </Autocomplete>
         </Box>
 
         <Button

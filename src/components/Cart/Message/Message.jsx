@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+
 import { useNavigate } from 'react-router-dom';
 
 import { AiFillShop } from 'react-icons/ai';
@@ -5,17 +7,29 @@ import { AiFillShop } from 'react-icons/ai';
 import Box from 'components/shared/Box';
 import Button from 'components/shared/Button';
 import { MessageTxt } from './Message.styled';
+import Map from 'components/Cart/GoogleMap';
 
-import theme from 'theme';
+import { resetSeller } from 'redux/sellerSlice';
 
-const Message = ({ txt }) => {
+const Message = ({ txt, ActiveSeller, setActiveSeller, Destination }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(resetSeller());
+    navigate('/');
+  };
 
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
       <MessageTxt>{txt}</MessageTxt>
-      <Box style={{ marginTop: theme.space[5] }}>
-        <Button icon={AiFillShop} onClick={() => navigate('/')}>
+
+      {ActiveSeller && Destination && (
+        <Map ActiveSeller={ActiveSeller} Destination={Destination} />
+      )}
+
+      <Box>
+        <Button icon={AiFillShop} onClick={handleClick}>
           Got to Shop
         </Button>
       </Box>

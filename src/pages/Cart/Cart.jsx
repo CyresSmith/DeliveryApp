@@ -11,7 +11,6 @@ import OrderForm from 'components/Cart/Form';
 import Box from 'components/Shared/Box';
 import Modal from 'components/Shared/Modal';
 import Message from 'components/Cart/Message';
-import Map from 'components/Cart/GoogleMap';
 
 import { CartBox, OrderPrice } from './Cart.styled';
 
@@ -29,11 +28,6 @@ const Cart = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!seller) {
-      navigate('/');
-      return;
-    }
-
     setActiveSeller(seller);
   }, [navigate, seller]);
 
@@ -50,10 +44,12 @@ const Cart = () => {
       <Box variant="section">
         {showModal && (
           <Modal toggleModal={toggleModal} showModal={showModal}>
-            <Message txt="Order Successfully sent!" />
-            {/* {ActiveSeller && Destination && (
-              <Map ActiveSeller={ActiveSeller} Destination={Destination} />
-            )} */}
+            <Message
+              ActiveSeller={ActiveSeller}
+              setActiveSeller={setActiveSeller}
+              Destination={Destination}
+              txt="Order Successfully sent!"
+            />
           </Modal>
         )}
         <CartBox>

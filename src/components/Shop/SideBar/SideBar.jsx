@@ -19,7 +19,14 @@ const SideBar = ({ ActiveSeller, toggleModal }) => {
     }
     dispatch(setSeller(seller));
   };
-  const handleSellerRemove = () => dispatch(resetSeller());
+
+  const handleSellerRemove = () => {
+    if (cart.length > 0) {
+      toggleModal();
+      return;
+    }
+    dispatch(resetSeller());
+  };
 
   const { data = [], isLoading, error, refetch } = useGetAllSellersQuery([]);
 

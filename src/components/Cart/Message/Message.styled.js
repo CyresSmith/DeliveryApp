@@ -6,4 +6,5 @@ export const MessageTxt = styled.p`
   font-weight: ${theme.fontWeights.bold};
   text-align: center;
   color: ${theme.colors.primary};
+  margin-bottom: ${theme.space[5]};
 `;
