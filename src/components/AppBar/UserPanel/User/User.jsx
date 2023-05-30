@@ -6,11 +6,9 @@ import IconButton from 'components/Shared/IconButton';
 
 import theme from 'theme';
 
-const user = { name: 'Ivan' };
-
 const isLoading = false;
 
-const User = () => {
+const User = ({ user }) => {
   return (
     <Box display="flex" alignItems="center">
       <UserName>{user?.name}</UserName>
