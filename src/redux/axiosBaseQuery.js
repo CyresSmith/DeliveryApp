@@ -3,6 +3,9 @@ import { refreshAuth, resetAuth } from './authSlice';
 
 import store from './store';
 
+export const baseUrl = 'https://delivery-app-backend-siau.onrender.com';
+// export const baseUrl = 'http://localhost:8989';
+
 export const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -30,7 +33,7 @@ const axiosBaseQuery =
 
 const refreshAccessToken = async refreshToken => {
   try {
-    const { data } = await axios.post('http://localhost:8989/users/refresh', {
+    const { data } = await axios.post(`${baseUrl}/users/refresh`, {
       refreshToken,
     });
 

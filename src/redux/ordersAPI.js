@@ -1,11 +1,11 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import axiosBaseQuery from './axiosBaseQuery';
+import axiosBaseQuery, { baseUrl } from './axiosBaseQuery';
 
 export const ordersApi = createApi({
   reducerPath: 'orders',
 
   baseQuery: axiosBaseQuery({
-    baseUrl: 'http://localhost:8989/orders',
+    baseUrl: `${baseUrl}/orders`,
   }),
 
   tagTypes: ['orders'],

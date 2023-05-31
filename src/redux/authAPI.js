@@ -1,11 +1,11 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import axiosBaseQuery from './axiosBaseQuery';
+import axiosBaseQuery, { baseUrl } from './axiosBaseQuery';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
 
   baseQuery: axiosBaseQuery({
-    baseUrl: 'http://localhost:8989/users',
+    baseUrl: `${baseUrl}/users`,
   }),
 
   tagTypes: ['authApi'],
