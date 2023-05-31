@@ -89,13 +89,10 @@ const OrderForm = ({ toggleModal, setDestination, ActiveSeller }) => {
     if (!isUninitialized && isSuccess) {
       dispatch(resetCart());
       toggleModal();
-      // navigate('/');
     }
 
     if (!isUninitialized && isError) {
-      console.log(error);
-
-      Notify.failure('What a shame! Order add error!', {
+      Notify.failure(`What a shame! ${error.data.message}`, {
         showOnlyTheLastOne: true,
         position: 'right-top',
       });
@@ -147,8 +144,6 @@ const OrderForm = ({ toggleModal, setDestination, ActiveSeller }) => {
           totalPrice: total(),
           seller: ActiveSeller._id,
         };
-
-        console.log('🚀 ~ file: OrderForm.jsx:150 ~ OrderForm ~ order:', order);
 
         handleNewOrderAdd(order);
         resetForm();
