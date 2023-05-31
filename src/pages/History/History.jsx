@@ -29,6 +29,10 @@ const History = () => {
   }, [refetch]);
 
   useEffect(() => {
+    if (!data) {
+      return;
+    }
+
     if (isSuccess) {
       setOrdersData(data.history);
     }
