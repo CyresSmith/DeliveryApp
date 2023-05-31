@@ -72,19 +72,19 @@ const Offer = ({ offer }) => {
           icon={FaPlus}
           iconSize={20}
           onClick={increaseCount}
-          ariaLable="increase count"
+          ariaLabel="increase count"
         />
         <IconButton
           icon={FaMinus}
           iconSize={20}
           onClick={decreaseCount}
-          ariaLable="decrease count"
+          ariaLabel="decrease count"
         />
         <IconButton
           icon={FaTrashAlt}
           iconSize={20}
           onClick={removeItem}
-          ariaLable="remove item "
+          ariaLabel="remove item "
           color={theme.colors.alert}
         />
       </Box>

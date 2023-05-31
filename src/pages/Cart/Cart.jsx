@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { getCart, getSeller } from 'redux/selectors';
+import { getCart, getSeller, getUser } from 'redux/selectors';
 
 import useToggleModal from 'hooks/useToggleModal';
 
@@ -20,6 +20,7 @@ const Cart = () => {
   const [TotalPrice, setTotalPrice] = useState(0);
   const [ActiveSeller, setActiveSeller] = useState(null);
   const [Destination, setDestination] = useState(null);
+
   const { showModal, toggleModal } = useToggleModal();
 
   const cart = useSelector(getCart);

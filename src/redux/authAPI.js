@@ -47,12 +47,27 @@ export const authApi = createApi({
     }),
 
     getCurrentUser: builder.query({
-      query: token => ({
+      query: () => ({
         url: '/current',
         method: 'GET',
-        data: token,
       }),
       providesTags: ['authApi'],
+    }),
+
+    getHistory: builder.query({
+      query: () => ({
+        url: '/history',
+        method: 'GET',
+      }),
+      providesTags: ['authApi'],
+    }),
+
+    logout: builder.mutation({
+      query: () => ({
+        url: '/logout',
+        method: 'POST',
+      }),
+      invalidatesTags: ['authApi'],
     }),
   }),
 });
@@ -62,5 +77,7 @@ export const {
   useVerifyQuery,
   useLoginMutation,
   useRefreshMutation,
+  useLogoutMutation,
   useGetCurrentUserQuery,
+  useGetHistoryQuery,
 } = authApi;

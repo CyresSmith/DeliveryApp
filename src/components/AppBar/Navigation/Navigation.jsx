@@ -2,17 +2,19 @@ import { useSelector } from 'react-redux';
 
 import { AiFillShop } from 'react-icons/ai';
 import { HiShoppingCart } from 'react-icons/hi';
+import { MdOutlineHistoryEdu } from 'react-icons/md';
 
 import { Nav, Link } from './Navigation.styled';
 import Logo from './Logo';
 
-import { getCart } from 'redux/selectors';
+import { getCart, getUser } from 'redux/selectors';
 
 import Box from 'components/shared/Box';
 import Badge from 'components/Shared/Badge';
 
 const Navigation = () => {
   const cartItems = useSelector(getCart).length;
+  const user = useSelector(getUser);
 
   return (
     <Nav>
@@ -32,6 +34,13 @@ const Navigation = () => {
               <HiShoppingCart /> Cart
             </Link>
           </Box>
+        </li>
+        <li>
+          {user._id && (
+            <Link to="/history">
+              <MdOutlineHistoryEdu /> History
+            </Link>
+          )}
         </li>
       </ul>
     </Nav>

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -9,7 +9,6 @@ import { useLoginMutation } from 'redux/authApi';
 import { IoIosMail } from 'react-icons/io';
 import { FaCheck } from 'react-icons/fa';
 import { MdPassword } from 'react-icons/md';
-import { FaUserCircle, FaPhoneAlt, FaMapMarkedAlt } from 'react-icons/fa';
 
 import { FormBox } from './LoginForm.styled';
 
@@ -39,7 +38,7 @@ const initialValues = {
   password: '',
 };
 
-const LoginForm = ({ toggleModal, setDestination, ActiveSeller }) => {
+const LoginForm = () => {
   const [login, { isLoading, isSuccess, isError, error, isUninitialized }] =
     useLoginMutation();
 
@@ -107,9 +106,9 @@ const LoginForm = ({ toggleModal, setDestination, ActiveSeller }) => {
 
         <Button
           type="submit"
-          // isLoading={isLoading}
+          isLoading={isLoading}
           icon={FaCheck}
-          // disabled={!isLoading}
+          disabled={isLoading}
           children="Login"
           iconSize={20}
         />

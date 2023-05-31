@@ -1,5 +1,5 @@
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Notify } from 'notiflix';
@@ -8,7 +8,7 @@ import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
 
 const MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
-import { getCart } from 'redux/selectors';
+import { getCart, getUser } from 'redux/selectors';
 import { resetCart } from 'redux/cartSlice';
 import { useAddNewOrderMutation } from 'redux/ordersApi';
 
@@ -32,18 +32,11 @@ const ValidationSchema = Yup.object().shape({
   phone: Yup.string()
     .matches(phoneRegExp, 'Phone in international format')
     .required('Required'),
-  adress: Yup.string()
+  address: Yup.string()
     .min(8, 'Must be at least 8 characters')
     .max(30, 'Must be max 30 characters')
     .required('Required'),
 });
-
-const initialValues = {
-  name: '',
-  email: '',
-  phone: '',
-  adress: '',
-};
 
 const libraries = ['places'];
 
@@ -53,15 +46,38 @@ const OrderForm = ({ toggleModal, setDestination, ActiveSeller }) => {
     libraries,
   });
 
+  const user = useSelector(getUser);
   const cart = useSelector(getCart);
   const dispatch = useDispatch();
+
+  const [UserData, setUserData] = useState({
+    _id: '',
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+  });
+
+  useEffect(() => {
+    if (!user._id) {
+      return;
+    }
+
+    const { _id, name, email, phone, address } = user;
+
+    setUserData({ _id, name, email, phone, address });
+  }, []);
 
   const [
     addNewOrder,
     { isLoading, isSuccess, isError, error, isUninitialized },
   ] = useAddNewOrderMutation();
 
-  const hendleNewOrderAdd = async data => {
+  const handleChange = e => {
+    setUserData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleNewOrderAdd = async data => {
     try {
       await addNewOrder(data);
     } catch (error) {
@@ -92,9 +108,9 @@ const OrderForm = ({ toggleModal, setDestination, ActiveSeller }) => {
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={UserData}
       validationSchema={ValidationSchema}
-      onSubmit={({ name, email, phone, adress }, { resetForm }) => {
+      onSubmit={({ name, email, phone, address }, { resetForm }) => {
         const items = () => {
           let items = [];
           cart.forEach(({ _id, name, price, count, total }) =>
@@ -107,7 +123,7 @@ const OrderForm = ({ toggleModal, setDestination, ActiveSeller }) => {
             })
           );
 
-          setDestination(adress);
+          setDestination(address);
 
           return items;
         };
@@ -121,21 +137,24 @@ const OrderForm = ({ toggleModal, setDestination, ActiveSeller }) => {
 
         const order = {
           client: {
-            name: name.trim(),
-            email: email.trim(),
-            phone: phone.trim(),
-            adress: adress.trim(),
+            _id: UserData._id,
+            name: UserData.name.trim(),
+            email: UserData.email.trim(),
+            phone: UserData.phone.trim(),
+            address: UserData.address.trim(),
           },
           items: items(),
           totalPrice: total(),
           seller: ActiveSeller._id,
         };
 
-        hendleNewOrderAdd(order);
+        console.log('🚀 ~ file: OrderForm.jsx:150 ~ OrderForm ~ order:', order);
+
+        handleNewOrderAdd(order);
         resetForm();
       }}
     >
-      <Form>
+      <Form onChange={handleChange}>
         <Box mb={[6]}>
           <FormField
             type="name"
@@ -166,10 +185,10 @@ const OrderForm = ({ toggleModal, setDestination, ActiveSeller }) => {
         <Box mb={[5]}>
           <Autocomplete>
             <FormField
-              type="adress"
-              label="Adress"
+              type="address"
+              label="Address"
               icon={FaMapMarkedAlt}
-              placeholder="Adress"
+              placeholder="Address"
             />
           </Autocomplete>
         </Box>

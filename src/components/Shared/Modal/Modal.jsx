@@ -34,7 +34,7 @@ const Modal = ({ toggleModal, showModal, children }) => {
         <IconButton
           icon={CgClose}
           iconSize={20}
-          ariaLable="close button"
+          ariaLabel="close button"
           onClick={toggleModal}
           backgroundColor={theme.colors.secondary}
           color={theme.colors.primary}

@@ -23,7 +23,7 @@ export const OffersBox = styled.ul`
   }
 
   &::-webkit-scrollbar-track {
-    background: 'transperent';
+    background: 'transparent';
     border-radius: 4px;
     overflow: 'hidden';
   }

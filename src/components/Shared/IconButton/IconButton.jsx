@@ -8,7 +8,7 @@ const IconButton = ({
   iconSize,
   type = 'button',
   disabled = false,
-  ariaLable,
+  ariaLabel,
   round,
   onClick,
   backgroundColor = `${theme.colors.background}`,
@@ -18,7 +18,7 @@ const IconButton = ({
     <StyledButton
       type={type}
       disabled={disabled}
-      aria-labelledby={ariaLable}
+      aria-labelledby={ariaLabel}
       round={round}
       onClick={onClick}
       backgroundColor={backgroundColor}

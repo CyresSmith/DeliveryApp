@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -32,7 +31,7 @@ const ValidationSchema = Yup.object().shape({
   phone: Yup.string()
     .matches(phoneRegExp, 'Phone in international format')
     .required('Required'),
-  adress: Yup.string()
+  address: Yup.string()
     .min(8, 'Must be at least 8 characters')
     .max(30, 'Must be max 30 characters')
     .required('Required'),
@@ -50,12 +49,12 @@ const initialValues = {
   name: '',
   email: '',
   phone: '',
-  adress: '',
+  address: '',
   password: '',
 };
 
-const RegisterForm = ({ toggleModal, setDestination, ActiveSeller }) => {
-  const [register, { isLoading, isSuccess, isError, error, isUninitialized }] =
+const RegisterForm = () => {
+  const [register, { isLoading, isSuccess, isError, error }] =
     useRegisterMutation();
 
   const handleRegister = async user => {
@@ -78,7 +77,10 @@ const RegisterForm = ({ toggleModal, setDestination, ActiveSeller }) => {
     }
 
     if (isError) {
-      console.error(error);
+      Notify.failure(error.data.message, {
+        showOnlyTheLastOne: true,
+        position: 'right-top',
+      });
     }
   }, [error, isError, isSuccess, navigate]);
 
@@ -86,12 +88,12 @@ const RegisterForm = ({ toggleModal, setDestination, ActiveSeller }) => {
     <Formik
       initialValues={initialValues}
       validationSchema={ValidationSchema}
-      onSubmit={({ name, email, phone, adress, password }, { resetForm }) => {
+      onSubmit={({ name, email, phone, address, password }, { resetForm }) => {
         const newUser = {
           name: name.trim(),
           email: email.trim(),
           phone: phone.trim(),
-          adress: adress.trim(),
+          address: address.trim(),
           password: password.trim(),
         };
 
@@ -134,10 +136,10 @@ const RegisterForm = ({ toggleModal, setDestination, ActiveSeller }) => {
         </Box>
         <Box mb={[6]}>
           <FormField
-            type="adress"
-            label="Adress"
+            type="address"
+            label="Address"
             icon={FaMapMarkedAlt}
-            placeholder="Adress"
+            placeholder="Address"
           />
         </Box>
         <Box mb={[6]}>
@@ -151,9 +153,9 @@ const RegisterForm = ({ toggleModal, setDestination, ActiveSeller }) => {
 
         <Button
           type="submit"
-          // isLoading={isLoading}
+          isLoading={isLoading}
           icon={FaCheck}
-          // disabled={!isLoading}
+          disabled={isLoading}
           children="Register"
           iconSize={20}
         />

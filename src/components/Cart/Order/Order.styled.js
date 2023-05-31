@@ -14,7 +14,7 @@ export const OrderList = styled.ul`
   }
 
   &::-webkit-scrollbar-track {
-    background: 'transperent';
+    background: 'transparent';
     border-radius: 4px;
     overflow: 'hidden';
   }

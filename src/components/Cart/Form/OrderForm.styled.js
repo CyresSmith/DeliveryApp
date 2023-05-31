@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from 'theme';
+
 import { Form } from 'formik';
 
 export const OrderForm = styled(Form)`

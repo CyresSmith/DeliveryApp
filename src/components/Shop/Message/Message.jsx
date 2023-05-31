@@ -33,8 +33,8 @@ const Message = ({ ActiveSeller, toggleModal }) => {
       style={{ maxWidth: '600px' }}
     >
       <MessageTxt>
-        The shopping cart contains the goods of the seller "
-        {ActiveSeller.toUpperCase()}"!
+        The shopping cart contains the goods of the seller &quot
+        {ActiveSeller.toUpperCase()}&quot!
       </MessageTxt>
       <MessageTxt>Do you want to place an order?</MessageTxt>
       <MessageTxt>Or the items will be removed from the cart!</MessageTxt>

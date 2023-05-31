@@ -6,7 +6,7 @@ export const authInitialState = {
     name: null,
     email: null,
     phone: null,
-    adress: null,
+    address: null,
     avatarUrl: null,
     verify: null,
   },

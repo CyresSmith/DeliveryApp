@@ -1,20 +1,19 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-import { useDispatch, useSelector } from 'react-redux';
-
-import { getAuth } from 'redux/selectors';
+import { useGetCurrentUserQuery } from 'redux/authApi';
+import { setUser } from 'redux/authSlice';
 
 import SharedLayout from 'pages/SharedLayout';
 import Register from 'pages/Register';
 import Login from 'pages/Login';
+import History from 'pages/History';
 import Verify from 'pages/Verify';
 import Shop from 'pages/Shop';
 import Cart from 'pages/Cart';
 import NotFound from 'pages/NotFound';
-import { setAuthHeader } from 'redux/axiosBaseQuery';
-import { useGetCurrentUserQuery } from 'redux/authApi';
-import { setUser } from 'redux/authSlice';
+import PrivateRoute from 'components/PrivateRoute';
 
 // const SharedLayout = lazy(() => import('pages/SharedLayout'));
 // const Shop = lazy(() => import('pages/Shop'));
@@ -22,28 +21,14 @@ import { setUser } from 'redux/authSlice';
 // const NotFound = lazy(() => import('pages/NotFound'));
 
 function App() {
-  const { accessToken } = useSelector(getAuth);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   if (accessToken) {
-  //     setAuthHeader(accessToken);
-  //   }
-  // }, [accessToken]);
 
   const { data, isLoading, error, isError, isSuccess } =
     useGetCurrentUserQuery();
 
-  console.log('🚀 ~ file: App.jsx:36 ~ App ~ data:', data);
-
   useEffect(() => {
     if (!isLoading && isSuccess) {
       dispatch(setUser(data));
-    }
-
-    if (isError) {
-      console.error(error.data.message);
     }
   }, [data, dispatch, error, isError, isLoading, isSuccess]);
 
@@ -55,6 +40,14 @@ function App() {
           <Route index element={<Shop />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route
+            path="/history"
+            element={
+              <PrivateRoute>
+                <History />
+              </PrivateRoute>
+            }
+          />
           <Route path="/verify/:token" element={<Verify />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
