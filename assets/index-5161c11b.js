@@ -1,4 +1,4 @@
-import{s as o,t as e,u as f,b as g,n as $,r as j,j as s,G as u}from"./index-de7ac07b.js";import{S as y}from"./Section-0f21cbd8.js";import{B as b}from"./Box.styled-0ad813d7.js";const S=o.ul`
+import{s as o,t as e,u as f,b as g,n as $,r as j,j as s,G as u}from"./index-857cc78a.js";import{S as y}from"./Section-067a944a.js";import{B as b}from"./Box.styled-166ef116.js";const S=o.ul`
   padding: ${i=>i.mediaType==="desktop"?e.space[5]:e.space[4]};
   background-color: ${e.colors.primary};
 

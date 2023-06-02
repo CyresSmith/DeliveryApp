@@ -1,1 +1,0 @@
-import{j as o}from"./index-de7ac07b.js";import{B as t}from"./Box.styled-0ad813d7.js";const n=()=>o.jsx(t,{variant:"container",as:"section",children:o.jsx(t,{variant:"section",display:"flex",children:o.jsx("p",{children:"Not Found"})})}),i=n;export{i as default};
