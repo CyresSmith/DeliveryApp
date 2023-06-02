@@ -1,4 +1,4 @@
-import{F as Q,s as V}from"./index-62f6d308.js";/*
+import{F as Q,s as V}from"./index-04bfb624.js";/*
 object-assign
 (c) Sindre Sorhus
 @license MIT
