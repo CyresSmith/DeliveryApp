@@ -1,0 +1,13 @@
+import{s as R,t as i,h as M,u as w,b as F,i as q,r as $,j as e}from"./index-b120845e.js";import{F as S,c as E,a,b as A,d as s,e as B,I as N,f as P,g as k,h as v}from"./FormField-40a0960e.js";import{n as p}from"./notiflix-aio-3.2.6.min-574377a7.js";import{b as O}from"./index.esm-da841f61.js";import{B as I}from"./Button-c6b7a546.js";import{B as r}from"./Box.styled-8485dffa.js";import{S as L}from"./Section-0afaffcc.js";import"./iconBase-7ca16e1f.js";const T=R(S)`
+  display: flex;
+  flex: 20%;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: ${i.colors.primary};
+  padding: ${i.space[5]};
+  padding-top: ${i.space[6]};
+  width: ${t=>t.mediatype==="mobile"?"100%":"350px"};
+  border-radius: ${i.radii.high};
+`,V=/^(\+?\d{1,3}\s?-?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{2}[\s.-]?\d{2}$/,_=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/,z=E().shape({name:a().min(3,"Must be at least 3 characters").max(20,"Must be max 20 characters").required("Required"),email:a().email("Must be valid email").required("Required"),phone:a().matches(V,"Phone in international format").required("Required"),address:a().min(8,"Must be at least 8 characters").max(30,"Must be max 30 characters").required("Required"),password:a().min(8,"Must be at least 8 characters").max(20,"Must be max 20 characters").matches(_,"Must be at least one capital letter and one number").required("Required")}),C={name:"",email:"",phone:"",address:"",password:""},U=()=>{const[t,{isLoading:d,isSuccess:o,isError:m,error:c}]=M(),h=async n=>{await t(n)},u=w(F),l=q();return $.useEffect(()=>{o&&(l("/"),p.Notify.success("Registration was success! Verification email sent on your email. Please confirm!",{showOnlyTheLastOne:!0,position:"right-top"})),m&&p.Notify.failure(c.data.message,{showOnlyTheLastOne:!0,position:"right-top"})},[c,m,o,l]),e.jsx(A,{initialValues:C,validationSchema:z,onSubmit:({name:n,email:x,phone:b,address:g,password:f},{resetForm:y})=>{const j={name:n.trim(),email:x.trim(),phone:b.trim(),address:g.trim(),password:f.trim()};h(j),o&&y()},children:e.jsxs(T,{mediatype:u,children:[e.jsx(r,{mb:[6],children:e.jsx(s,{type:"name",label:"Name",icon:B,placeholder:"Name"})}),e.jsx(r,{mb:[6],children:e.jsx(s,{type:"email",label:"Email",icon:N,placeholder:"mail@mail.com"})}),e.jsx(r,{mb:[6],children:e.jsx(s,{type:"phone",label:"Phone",icon:P,placeholder:"+380 00 000 00 00"})}),e.jsx(r,{mb:[6],children:e.jsx(s,{type:"address",label:"Address",icon:k,placeholder:"Address"})}),e.jsx(r,{mb:[6],children:e.jsx(s,{type:"password",label:"password",icon:O,placeholder:"********"})}),e.jsx(I,{type:"submit",isLoading:d,icon:v,disabled:d,children:"Register",iconSize:20})]})})},Z=()=>e.jsx(L,{children:e.jsx(U,{})}),Y=Z;export{Y as default};
