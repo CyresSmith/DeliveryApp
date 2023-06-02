@@ -132,20 +132,49 @@ const OrderForm = ({ toggleModal, setDestination, ActiveSeller }) => {
           return price;
         };
 
-        const order = {
-          client: {
-            _id: UserData._id,
-            name: UserData.name.trim(),
-            email: UserData.email.trim(),
-            phone: UserData.phone.trim(),
-            address: UserData.address.trim(),
-          },
-          items: items(),
-          totalPrice: total(),
-          seller: ActiveSeller._id,
+        const newOrder = () => {
+          if (UserData._id) {
+            return {
+              client: {
+                _id: UserData._id,
+                name: UserData.name.trim(),
+                email: UserData.email.trim(),
+                phone: UserData.phone.trim(),
+                address: UserData.address.trim(),
+              },
+              items: items(),
+              totalPrice: total(),
+              seller: ActiveSeller._id,
+            };
+          }
+
+          return {
+            client: {
+              name: UserData.name.trim(),
+              email: UserData.email.trim(),
+              phone: UserData.phone.trim(),
+              address: UserData.address.trim(),
+            },
+            items: items(),
+            totalPrice: total(),
+            seller: ActiveSeller._id,
+          };
         };
 
-        handleNewOrderAdd(order);
+        // const order = {
+        //   client: {
+        //     _id: UserData._id,
+        //     name: UserData.name.trim(),
+        //     email: UserData.email.trim(),
+        //     phone: UserData.phone.trim(),
+        //     address: UserData.address.trim(),
+        //   },
+        //   items: items(),
+        //   totalPrice: total(),
+        //   seller: ActiveSeller._id,
+        // };
+
+        handleNewOrderAdd(newOrder());
         resetForm();
       }}
     >
