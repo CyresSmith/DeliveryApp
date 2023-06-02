@@ -19,7 +19,7 @@ export const ModalWindow = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   min-height: 250px;
-  overflow: scroll;
+  overflow: ${p => (p.mediaType === 'desktop' ? 'unset' : 'scroll')};
   height: ${p => (p.mediaType === 'mobile' ? '100vh' : 'auto')};
   width: ${p => (p.mediaType === 'mobile' ? '100vw' : 'auto')};
   padding: ${theme.space[5]};
