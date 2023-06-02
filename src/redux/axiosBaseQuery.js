@@ -3,8 +3,8 @@ import { refreshAuth, resetAuth } from './authSlice';
 
 import store from './store';
 
-// export const baseUrl = 'https://delivery-app-backend-siau.onrender.com';
-export const baseUrl = 'http://localhost:8989';
+export const baseUrl = 'https://delivery-app-backend-siau.onrender.com';
+// export const baseUrl = 'http://localhost:8989';
 
 export const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
