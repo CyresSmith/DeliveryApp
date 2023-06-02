@@ -28,8 +28,8 @@ const Message = ({ ActiveSeller, toggleModal }) => {
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
       <MessageTxt>
-        The shopping cart contains the goods of the seller &quot
-        {ActiveSeller.toUpperCase()}&quot!
+        The shopping cart contains the goods of the seller "
+        {ActiveSeller.toUpperCase()}"!
       </MessageTxt>
       <MessageTxt>Do you want to place an order?</MessageTxt>
       <MessageTxt>Or the items will be removed from the cart!</MessageTxt>
