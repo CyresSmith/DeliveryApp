@@ -3,8 +3,19 @@ import styled from 'styled-components';
 import theme from 'theme';
 
 export const ItemBox = styled.li`
-  width: calc((100% - (${theme.space[5]} * 2)) / 3);
-  height: 550px;
+  width: ${p => {
+    switch (p.mediaType) {
+      case 'desktop':
+        return `calc((100% - (${theme.space[5]} * 2)) / 3)`;
+
+      case 'tablet':
+        return `calc((100% - ${theme.space[5]}) / 2)`;
+
+      default:
+        break;
+    }
+  }};
+  height: 100%;
   background-color: ${theme.colors.white};
   border-radius: ${theme.radii.normal};
   overflow: hidden;
@@ -14,13 +25,13 @@ export const ItemBox = styled.li`
   box-shadow: ${theme.shadow.medium};
 
   &:hover {
-    scale: 1.1;
+    scale: ${p => (p.mediaType === 'desktop' ? 1.1 : 'none')};
     box-shadow: ${theme.shadow.high};
   }
 `;
 
 export const Image = styled.img`
-  height: 60%;
+  height: 300px;
   width: 100%;
   background-color: ${theme.colors.muted};
   object-fit: cover;
@@ -28,8 +39,7 @@ export const Image = styled.img`
 
 export const ItemFooter = styled.div`
   height: 40%;
-  padding: ${theme.space[3]};
-  justify-content: space-between;
+  padding: ${theme.space[4]};
 `;
 
 export const Name = styled.p`

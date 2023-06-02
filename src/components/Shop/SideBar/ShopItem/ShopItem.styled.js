@@ -6,7 +6,7 @@ export const Item = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${theme.space[2]} ${theme.space[3]};
+  padding: ${theme.space[2]} ${theme.space[4]};
   color: ${p =>
     p.seller === p.active ? theme.colors.primary : theme.colors.background};
   background-color: ${p =>

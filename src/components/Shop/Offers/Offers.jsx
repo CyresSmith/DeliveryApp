@@ -5,10 +5,14 @@ import Item from './OfferItem';
 import { OffersBox } from './Offers.styled';
 
 import theme from 'theme';
+import { useSelector } from 'react-redux';
+import { getMediatype } from 'redux/selectors';
 
 const Offers = ({ ActiveSeller, OffersItems, isLoading }) => {
+  const mediaType = useSelector(getMediatype);
+
   return (
-    <OffersBox>
+    <OffersBox mediaType={mediaType}>
       {isLoading && (
         <Box
           style={{
@@ -24,7 +28,12 @@ const Offers = ({ ActiveSeller, OffersItems, isLoading }) => {
       )}
       {!isLoading &&
         OffersItems.map(item => (
-          <Item key={item.name} item={item} ActiveSeller={ActiveSeller} />
+          <Item
+            mediaType={mediaType}
+            key={item.name}
+            item={item}
+            ActiveSeller={ActiveSeller}
+          />
         ))}
     </OffersBox>
   );

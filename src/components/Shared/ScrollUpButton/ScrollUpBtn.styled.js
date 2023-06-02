@@ -3,8 +3,8 @@ import theme from 'theme';
 
 const ScrollUpButton = styled.button`
   position: fixed;
-  bottom: ${theme.space[6]};
-  right: ${theme.space[6]};
+  bottom: ${p => (p.mediaType === 'desktop' ? theme.space[6] : theme.space[4])};
+  right: ${p => (p.mediaType === 'desktop' ? theme.space[6] : theme.space[4])};
   display: inline-flex;
   opacity: 0.7;
   padding: ${theme.space[3]};

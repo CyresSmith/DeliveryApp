@@ -1,14 +1,11 @@
-import Box from 'components/shared/Box';
-
 import RegisterForm from 'components/Register/RegisterForm';
+import Section from 'components/Shared/Section';
 
 const Register = () => {
   return (
-    <Box variant="container" as="section">
-      <Box variant="section">
-        <RegisterForm />
-      </Box>
-    </Box>
+    <Section>
+      <RegisterForm />
+    </Section>
   );
 };
 

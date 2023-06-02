@@ -16,6 +16,8 @@ import FormField from 'components/Shared/FormField';
 import Button from 'components/shared/Button';
 import Box from 'components/shared/Box';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getMediatype } from 'redux/selectors';
 
 const phoneRegExp =
   /^(\+?\d{1,3}\s?-?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{2}[\s.-]?\d{2}$/;
@@ -61,6 +63,8 @@ const RegisterForm = () => {
     await register(user);
   };
 
+  const mediaType = useSelector(getMediatype);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -97,11 +101,6 @@ const RegisterForm = () => {
           password: password.trim(),
         };
 
-        console.log(
-          '🚀 ~ file: RegisterForm.jsx:54 ~ RegisterForm ~ newUser:',
-          newUser
-        );
-
         handleRegister(newUser);
 
         if (isSuccess) {
@@ -109,7 +108,7 @@ const RegisterForm = () => {
         }
       }}
     >
-      <FormBox>
+      <FormBox mediatype={mediaType}>
         <Box mb={[6]}>
           <FormField
             type="name"

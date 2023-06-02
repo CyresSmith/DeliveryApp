@@ -41,6 +41,15 @@ const theme = {
 
   space: ['0px', '2px', '4px', '8px', '16px', '32px', '64px', '128px', '256px'],
 
+  mediaBreakpoints: {
+    mobile: { media: '(max-width: 767px)', width: '320px' },
+    tablet: {
+      media: '(min-width: 768px) and (max-width: 1279px)',
+      width: '768px',
+    },
+    desktop: { media: '(min-width: 1280px)', width: '1280px' },
+  },
+
   borders: {
     none: 'none',
     normal: '1px solid',

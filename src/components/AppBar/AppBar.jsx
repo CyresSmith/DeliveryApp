@@ -1,23 +1,65 @@
-import { memo } from 'react';
+import { memo, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import Box from 'components/shared/Box';
-import theme from 'theme';
+import { getMediatype, getCart } from 'redux/selectors';
+
+import { TiThMenu } from 'react-icons/ti';
+
 import Navigation from './Navigation';
 import UserPanel from './UserPanel';
+import Header from './Header';
+
+import Logo from './Logo';
+import theme from 'theme';
+import MobileMenu from './MobileMenu';
+
+import Box from 'components/shared/Box';
+import Badge from 'components/Shared/Badge';
+import IconButton from 'components/Shared/IconButton';
 
 const AppBar = () => {
+  const mediaType = useSelector(getMediatype);
+  const cartItems = useSelector(getCart).length;
+
+  const [MobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (mediaType === 'desktop') {
+      setMobileMenuOpen(false);
+    }
+  }, [mediaType]);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(prev => !prev);
+  };
+
   return (
-    <Box as="header" pt={[4]} pb={[4]} backgroundColor={theme.colors.secondary}>
-      <Box
-        variant="container"
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <Navigation />
-        <UserPanel />
-      </Box>
-    </Box>
+    <Header mediaType={mediaType}>
+      <Logo />
+      {mediaType === 'desktop' && <Navigation mediaType={mediaType} />}
+      {mediaType !== 'mobile' && <UserPanel mediaType={mediaType} />}
+
+      {mediaType !== 'desktop' && (
+        <Box style={{ position: 'relative' }}>
+          {cartItems !== 0 && <Badge number={cartItems} />}
+
+          <IconButton
+            icon={TiThMenu}
+            iconSize={mediaType === 'desktop' ? 15 : 25}
+            ariaLabel="open menu"
+            backgroundColor={theme.colors.background}
+            onClick={toggleMobileMenu}
+          />
+        </Box>
+      )}
+      {MobileMenuOpen && (
+        <MobileMenu
+          mediaType={mediaType}
+          toggleMobileMenu={toggleMobileMenu}
+          MobileMenuOpen={MobileMenuOpen}
+        />
+      )}
+    </Header>
   );
 };
 

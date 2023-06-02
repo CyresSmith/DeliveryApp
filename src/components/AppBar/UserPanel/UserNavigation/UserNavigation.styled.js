@@ -4,11 +4,13 @@ import theme from 'theme';
 
 export const UserNav = styled.ul`
   display: flex;
-  align-items: center;
+  flex-direction: ${p => (p.mediaType === 'mobile' ? 'column' : 'row')};
+  align-items: ${p => (p.mediaType === 'mobile' ? 'flex-start' : 'center')};
 
   li {
     :not(:last-of-type) {
-      margin-right: ${theme.space[4]};
+      margin-right: ${p => (p.mediaType === 'mobile' ? 0 : theme.space[4])};
+      margin-bottom: ${p => (p.mediaType === 'mobile' ? theme.space[4] : 0)};
     }
   }
 `;

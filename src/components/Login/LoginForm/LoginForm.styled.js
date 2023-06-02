@@ -13,6 +13,6 @@ export const FormBox = styled(Form)`
   background-color: ${theme.colors.primary};
   padding: ${theme.space[5]};
   padding-top: ${theme.space[6]};
-  width: 350px;
+  width: ${p => (p.mediatype === 'mobile' ? '100%' : '350px')};
   border-radius: ${theme.radii.high};
 `;

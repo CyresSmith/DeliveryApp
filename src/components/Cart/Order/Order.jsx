@@ -1,12 +1,12 @@
 import { OrderList, EmptyCart } from './Order.styled';
 import Offer from './Offer';
 
-const Order = ({ cart }) => {
+const Order = ({ cart, mediaType }) => {
   return (
     <OrderList>
       {cart.length > 0 ? (
         cart.map(offer => {
-          return <Offer key={offer.name} offer={offer} />;
+          return <Offer mediaType={mediaType} key={offer.name} offer={offer} />;
         })
       ) : (
         <EmptyCart>Cart is empty</EmptyCart>

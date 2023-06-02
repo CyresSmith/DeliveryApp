@@ -19,11 +19,15 @@ export const ModalWindow = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   min-height: 250px;
+  overflow: scroll;
+  height: ${p => (p.mediaType === 'mobile' ? '100vh' : 'auto')};
+  width: ${p => (p.mediaType === 'mobile' ? '100vw' : 'auto')};
   padding: ${theme.space[5]};
   padding-top: ${theme.space[6]};
   background-color: ${theme.colors.background};
   border-radius: ${theme.radii.high};
   box-shadow: ${theme.shadow.high};
+  z-index: 2;
 
   button[aria-labelledby='close button'] {
     position: absolute;

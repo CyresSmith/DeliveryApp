@@ -6,7 +6,7 @@ import { AiFillShop } from 'react-icons/ai';
 
 import Box from 'components/shared/Box';
 import Button from 'components/shared/Button';
-import { MessageTxt } from './Message.styled';
+import { MessageTxt, MessageBox } from './Message.styled';
 import Map from 'components/Cart/GoogleMap';
 
 import { resetSeller } from 'redux/sellerSlice';
@@ -21,7 +21,7 @@ const Message = ({ txt, ActiveSeller, setActiveSeller, Destination }) => {
   };
 
   return (
-    <Box display="flex" flexDirection="column" alignItems="center">
+    <MessageBox display="flex" flexDirection="column" alignItems="center">
       <MessageTxt>{txt}</MessageTxt>
 
       {ActiveSeller && Destination && (
@@ -33,7 +33,7 @@ const Message = ({ txt, ActiveSeller, setActiveSeller, Destination }) => {
           Got to Shop
         </Button>
       </Box>
-    </Box>
+    </MessageBox>
   );
 };
 

@@ -15,6 +15,7 @@ import storage from 'redux-persist/lib/storage';
 
 import { authApi } from './authApi';
 import { auth } from './authSlice';
+import { mediaType } from './mediaTypeSlice';
 import { cart } from './cartSlice';
 import { seller } from './sellerSlice';
 import { ordersApi } from './ordersApi';
@@ -32,6 +33,7 @@ const authPersistedReducer = persistReducer(authPersistConfig, auth);
 const store = configureStore({
   reducer: {
     auth: authPersistedReducer,
+    mediaType,
     cart,
     seller,
     [authApi.reducerPath]: authApi.reducer,

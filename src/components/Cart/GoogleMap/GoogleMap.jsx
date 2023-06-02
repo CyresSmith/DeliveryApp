@@ -91,7 +91,7 @@ function App({ Destination, ActiveSeller }) {
   };
 
   return (
-    <Box width="400px" mb={theme.space[4]}>
+    <Box width="100%" mb={theme.space[4]}>
       <Box mb={theme.space[5]}>
         <Info>Distance to the store: {distance} </Info>
         <Info>Estimated delivery time: {duration} </Info>

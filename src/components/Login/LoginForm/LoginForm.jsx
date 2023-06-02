@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -18,6 +18,7 @@ import Box from 'components/shared/Box';
 import { useNavigate } from 'react-router-dom';
 import { setAuth } from 'redux/authSlice';
 import { setAuthHeader } from 'redux/axiosBaseQuery';
+import { getMediatype } from 'redux/selectors';
 
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
 
@@ -43,6 +44,8 @@ const LoginForm = () => {
     useLoginMutation();
 
   const dispatch = useDispatch();
+
+  const mediaType = useSelector(getMediatype);
 
   const handleLogin = async userData => {
     const data = await login(userData);
@@ -86,7 +89,7 @@ const LoginForm = () => {
         }
       }}
     >
-      <FormBox>
+      <FormBox mediatype={mediaType}>
         <Box mb={[6]}>
           <FormField
             type="email"

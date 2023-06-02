@@ -4,6 +4,7 @@ import theme from 'theme';
 
 export const SideBarBox = styled.ul`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: ${theme.space[4]};
+  margin-bottom: ${theme.space[5]};
 `;

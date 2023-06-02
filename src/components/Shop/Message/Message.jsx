@@ -26,12 +26,7 @@ const Message = ({ ActiveSeller, toggleModal }) => {
   };
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      style={{ maxWidth: '600px' }}
-    >
+    <Box display="flex" flexDirection="column" alignItems="center">
       <MessageTxt>
         The shopping cart contains the goods of the seller &quot
         {ActiveSeller.toUpperCase()}&quot!

@@ -4,19 +4,20 @@ import { useSelector } from 'react-redux';
 import { useGetAllOffersQuery } from 'redux/offersApi';
 import useToggleModal from 'hooks/useToggleModal';
 
-import { getSeller } from 'redux/selectors';
+import { getMediatype, getSeller } from 'redux/selectors';
 
-import Box from 'components/shared/Box';
 import SideBar from 'components/Shop/SideBar';
 import Offers from 'components/Shop/Offers';
 import Modal from 'components/Shared/Modal';
 import Message from 'components/Shop/Message';
 
-import theme from 'theme';
+import Section from 'components/Shared/Section';
 
 const Shop = () => {
   const [ActiveSeller, setActiveSeller] = useState(null);
   const { showModal, toggleModal } = useToggleModal();
+
+  const mediaType = useSelector(getMediatype);
 
   const seller = useSelector(getSeller);
 
@@ -36,9 +37,10 @@ const Shop = () => {
   }, [refetch, ActiveSeller]);
 
   return (
-    <Box variant="container" as="section">
-      <Box variant="section" display="flex" style={{ gap: theme.space[5] }}>
+    <Section>
+      <>
         <SideBar ActiveSeller={ActiveSeller} toggleModal={toggleModal} />
+
         <Offers
           OffersItems={data}
           isLoading={isLoading}
@@ -52,8 +54,8 @@ const Shop = () => {
             />
           </Modal>
         )}
-      </Box>
-    </Box>
+      </>
+    </Section>
   );
 };
 

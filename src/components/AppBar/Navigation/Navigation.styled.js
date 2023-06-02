@@ -3,19 +3,18 @@ import { NavLink } from 'react-router-dom';
 import theme from 'theme';
 
 export const Nav = styled.nav`
-  ul {
-    display: flex;
-    align-items: center;
-  }
+  margin-left: ${p => (p.mediaType === 'desktop' ? theme.space[5] : 0)};
+`;
 
-  li {
-    :not(:last-of-type) {
-      margin-right: ${theme.space[4]};
-    }
+export const NavList = styled.ul`
+  display: ${p => (p.mediaType === 'desktop' ? 'flex' : 'block')};
+  align-items: center;
+`;
 
-    :first-of-type {
-      margin-right: ${theme.space[6]};
-    }
+export const NavItem = styled.li`
+  :not(:last-of-type) {
+    margin-right: ${p => (p.mediaType === 'desktop' ? theme.space[4] : 0)};
+    margin-bottom: ${p => (p.mediaType === 'desktop' ? 0 : theme.space[4])};
   }
 `;
 
@@ -24,13 +23,9 @@ export const Link = styled(NavLink)`
   font-weight: ${theme.fontWeights.regular};
   color: ${theme.colors.white};
   transition: ${theme.transition.primary};
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  transition-property: all;
-  transition-duration: 250ms;
-  transition-timing-function: ease-in-out;
-
-  svg {
+  transition: ${theme.transition.primary} svg {
     margin-right: ${theme.space[2]};
   }
 

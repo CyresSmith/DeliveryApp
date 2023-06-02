@@ -4,7 +4,7 @@ import theme from 'theme';
 export const BadgeBox = styled.div`
   position: absolute;
   top: -15px;
-  right: -10px;
+  left: -10px;
   height: 20px;
   width: 20px;
   background-color: ${theme.colors.accent};

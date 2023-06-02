@@ -1,14 +1,11 @@
-import Box from 'components/shared/Box';
-
 import LoginForm from 'components/Login/LoginForm';
+import Section from 'components/Shared/Section';
 
 const Login = () => {
   return (
-    <Box variant="container" as="section">
-      <Box variant="section">
-        <LoginForm />
-      </Box>
-    </Box>
+    <Section>
+      <LoginForm />
+    </Section>
   );
 };
 

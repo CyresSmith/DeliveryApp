@@ -15,7 +15,7 @@ import {
   Desc,
 } from './OfferItem.styled';
 
-const Item = ({ item, ActiveSeller }) => {
+const Item = ({ item, ActiveSeller, mediaType }) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
@@ -23,7 +23,7 @@ const Item = ({ item, ActiveSeller }) => {
   };
 
   return (
-    <ItemBox>
+    <ItemBox mediaType={mediaType}>
       <Image alt={item.name} src={item.image} />
       <ItemFooter>
         <Name>{item.name}</Name>
