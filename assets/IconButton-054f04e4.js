@@ -1,4 +1,4 @@
-import{s as u,t as o,j as n}from"./index-04bfb624.js";const b=u("button")`
+import{s as u,t as o,j as n}from"./index-302cc0a2.js";const b=u("button")`
   display: inline-flex;
   padding: ${o.space[2]};
   color: ${r=>r.color};
