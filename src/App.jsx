@@ -6,22 +6,26 @@ import { useGetCurrentUserQuery } from 'redux/authApi';
 import { setUser } from 'redux/authSlice';
 import { setMediaType } from 'redux/mediaTypeSlice';
 
-import SharedLayout from 'pages/SharedLayout';
-import Register from 'pages/Register';
-import Login from 'pages/Login';
-import History from 'pages/History';
-import Verify from 'pages/Verify';
-import Shop from 'pages/Shop';
-import Cart from 'pages/Cart';
-import NotFound from 'pages/NotFound';
+import useMediaHook from 'hooks/useMediaHook';
+// import SharedLayout from 'pages/SharedLayout';
+// import Register from 'pages/Register';
+// import Login from 'pages/Login';
+// import History from 'pages/History';
+// import Verify from 'pages/Verify';
+// import Shop from 'pages/Shop';
+// import Cart from 'pages/Cart';
+// import NotFound from 'pages/NotFound';
+
 import PrivateRoute from 'components/PrivateRoute';
 
-import useMediaHook from 'hooks/useMediaHook';
-
-// const SharedLayout = lazy(() => import('pages/SharedLayout'));
-// const Shop = lazy(() => import('pages/Shop'));
-// const Cart = lazy(() => import('pages/Cart'));
-// const NotFound = lazy(() => import('pages/NotFound'));
+const SharedLayout = lazy(() => import('pages/SharedLayout'));
+const Register = lazy(() => import('pages/Register'));
+const Login = lazy(() => import('pages/Login'));
+const History = lazy(() => import('pages/History'));
+const Verify = lazy(() => import('pages/Verify'));
+const Shop = lazy(() => import('pages/Shop'));
+const Cart = lazy(() => import('pages/Cart'));
+const NotFound = lazy(() => import('pages/NotFound'));
 
 function App() {
   const dispatch = useDispatch();
